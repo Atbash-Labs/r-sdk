@@ -3,7 +3,6 @@ Type: Package
 Title: Fortress SDK
 Version: 0.1.0
 Author: Fortress Labs
-Maintainer: Fortress Labs
 Description: SDK for accesssing and performing private computation on Fortress platform
 License: What license is it under?
 Encoding: UTF-8
