@@ -2,7 +2,7 @@ Package: rsdk
 Type: Package
 Title: Fortress SDK
 Version: 0.1.0
-Author@R: person("Fortress","Labs", role = c("aut","cre"))
+Authors@R: person("Fortress","Labs", role = c("aut","cre"))
 Description: SDK for accesssing and performing private computation on Fortress platform
 License: What license is it under?
 VignetteBuilder: knitr
