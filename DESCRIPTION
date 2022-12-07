@@ -5,23 +5,6 @@ Version: 0.1.0
 Author: Fortress Labs
 Description: SDK for accesssing and performing private computation on Fortress platform
 License: What license is it under?
-Depends: R (>= 3.4)
-Imports:
-    cli (>= 3.0.1),
-    gitcreds,
-    httr (>= 1.2),
-    ini,
-    jsonlite,
-    rlang
-Suggests:
-    covr,
-    knitr,
-    mockery,
-    rmarkdown,
-    rprojroot,
-    spelling,
-    testthat (>= 3.0.0),
-    withr
 VignetteBuilder: knitr
 Encoding: UTF-8
 Language: en-US
