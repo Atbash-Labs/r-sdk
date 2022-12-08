@@ -2,8 +2,8 @@
 ####      EXAMPLE Querying USAGE       ####
 ###########################################
 
-source("sdk.r")
-
+source("../R/sdk.r",chdir = TRUE)
+print(getwd())
 ###########################################
 ####      Buyer Interaction Flow       ####
 ###########################################
@@ -21,8 +21,6 @@ print(query_key)
 
 # Initiate a query
 sql_query <- "select count(*) as numpeople from public.condition_era_death"
-result <- query(buyer, query_key, sql_query)
+result <- query(buyer, query_key,query=sql_query)
+print(result)
 
-# get table columns
-columns <- get_columns(buyer, query_key)
-print(columns)
