@@ -1,5 +1,3 @@
-# install.packages("httr", repos = "http://cran.us.r-project.org") # nolint
-
 library(httr)
 
 
@@ -48,7 +46,7 @@ get_key_list <- function(buyer) {
   return(subkey_list)
 }
 
-query <- function(buyer, query_key= NULL, query) {
+query <- function(buyer, query_key = NULL, query) {
   base_url <- as.character(buyer["base_url"])
   query_url <- paste(base_url, "/execute_query", sep = "")
   payload <- list(
