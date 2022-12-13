@@ -31,6 +31,5 @@ jobs:
 
       - run: Rscript -e "testthat::test_dir('tests')"
 
-      - uses: r-lib/actions/check-r-package@v2
-        with:
-          upload-snapshots: true
+      # not needed right now
+      # - uses: r-lib/actions/check-r-package@v2  
