@@ -1,4 +1,6 @@
-library(testthat)
-library(remotes)
-
-test_check("remotes")
+if (require(testthat)) {
+  library(rsdk)
+  test_check("rsdk")
+} else {
+  message("testthat not available.")
+}

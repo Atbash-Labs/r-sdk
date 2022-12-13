@@ -5,6 +5,7 @@ Version: 0.1.0
 Authors@R: person("Fortress","Labs", email = "something@fortresslabs.com", role = c("aut","cre"))
 Description: SDK for accesssing and performing private computation on Fortress platform
 License: What license is it under?
+Suggests: httr, knitr, rmarkdown, testthat
 VignetteBuilder: knitr
 Encoding: UTF-8
 Language: en-US
