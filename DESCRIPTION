@@ -9,7 +9,8 @@ Depends: R (>= 4.2)
 Imports: 
   cli,
   httr,
-  rlang
+  rlang,
+  testthat
 Suggests: 
   httr, 
   knitr, 
