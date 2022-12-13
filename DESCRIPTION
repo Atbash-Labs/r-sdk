@@ -12,10 +12,8 @@ Imports:
   rlang,
   testthat
 Suggests: 
-  httr, 
   knitr, 
   rmarkdown, 
-  testthat
 VignetteBuilder: knitr
 Encoding: UTF-8
 Language: en-US
