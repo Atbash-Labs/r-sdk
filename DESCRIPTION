@@ -5,10 +5,20 @@ Version: 0.1.0
 Authors@R: person("Fortress","Labs", email = "something@fortresslabs.com", role = c("aut","cre"))
 Description: SDK for accesssing and performing private computation on Fortress platform
 License: What license is it under?
-Suggests: httr, knitr, rmarkdown, testthat
+Depends: R (>= 4.2)
+Imports: 
+  cli,
+  httr,
+  rlang
+Suggests: 
+  httr, 
+  knitr, 
+  rmarkdown, 
+  testthat
 VignetteBuilder: knitr
 Encoding: UTF-8
 Language: en-US
 Roxygen: list(markdown = TRUE)
 LazyData: true
 Config/Needs/website: tidyverse/tidytemplate
+Config/testthat/load-all: list(export_all = FALSE, helpers = FALSE)
