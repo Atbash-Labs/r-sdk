@@ -42,7 +42,7 @@ get_key_list <- function(buyer) {
     print(error)
   }
 
-  subkey_list <- as.character(rsp["subkeys"])
+  subkey_list <- (rsp["subkeys"])
   return(subkey_list)
 }
 
