@@ -47,12 +47,5 @@ jobs:
       - uses: r-lib/actions/check-r-package@v2
         with:
           error-on: '"error"'  
-
-      # - name: Run install script
-      #   run: Rscript -e "testthat::test_dir('tests')"
-
-      # - name: Run tests
-      #   run: Rscript -e "testthat::test_dir('tests')"
-
-      
-      
+          
+                
