@@ -44,7 +44,8 @@ jobs:
           extra-packages: any::rcmdcheck
           needs: check
 
-      - uses: r-lib/actions/check-r-package@v2
+      - name: CMD Check run (Tests run in this step)
+        uses: r-lib/actions/check-r-package@v2
         with:
           error-on: '"error"'  
           
