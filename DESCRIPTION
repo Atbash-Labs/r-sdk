@@ -20,4 +20,4 @@ Language: en-US
 Roxygen: list(markdown = TRUE)
 LazyData: true
 Config/Needs/website: tidyverse/tidytemplate
-Config/testthat/load-all: list(export_all = FALSE, helpers = FALSE)
+Config/testthat/load-all: list(export_all = TRUE, helpers = FALSE)
