@@ -42,19 +42,19 @@ test_that("test_invalid_buyer_for_key_list", {
   expect_equal(key_list$subkeys, NULL)
 })
 
-# test_that("test_get_key_success", {
-#   buyer <- new_valid_buyer()
-#   new_key <- get_key(buyer)
+test_that("test_get_key_success", {
+  buyer <- new_valid_buyer()
+  new_key <- get_key(buyer)
 
-#   expect_notequal(new_key, NULL)
-# })
+  expect_false(length(new_key$subkey) == 0)
+})
 
-# test_that("test_invalid_buyer_for_new_key", {
-#   buyer <- new_invalid_buyer()
-#   new_key <- get_key(buyer)
+test_that("test_invalid_buyer_for_new_key", {
+  buyer <- new_invalid_buyer()
+  new_key <- get_key(buyer)
 
-#   expect_equal(new_key, NULL)
-# })
+  expect_true(length(new_key$subkey) == 0)
+})
 
 # test_that("test_query_success", {
 #   buyer <- new_valid_buyer()
