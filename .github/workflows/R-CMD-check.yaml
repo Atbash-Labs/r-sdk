@@ -4,7 +4,7 @@ name: Package Tests
 
 on:
   push:
-    branches:
+    paths:
       - 'R/**'
       - 'tests/**'
       - '.github/workflows/R-CMD-check.yaml'
