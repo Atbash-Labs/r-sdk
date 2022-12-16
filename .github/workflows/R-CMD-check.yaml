@@ -44,11 +44,13 @@ jobs:
           extra-packages: any::rcmdcheck
           needs: check
 
-      - name: Run install script
-        run: Rscript -e "testthat::test_dir('tests')"
+      - uses: r-lib/actions/check-r-package@v2  
 
-      - name: Run tests
-        run: Rscript -e "testthat::test_dir('tests')"
+      # - name: Run install script
+      #   run: Rscript -e "testthat::test_dir('tests')"
 
-      # not needed right now
-      # - uses: r-lib/actions/check-r-package@v2  
+      # - name: Run tests
+      #   run: Rscript -e "testthat::test_dir('tests')"
+
+      
+      
