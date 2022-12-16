@@ -26,7 +26,7 @@ get_key <- function(buyer) {
     print(error)
   }
 
-  subkey <- as.character(rsp["subkey"])
+  subkey <- (rsp["subkey"])
   return(subkey)
 }
 
