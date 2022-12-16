@@ -1,0 +1,10 @@
+.Rproj.user
+.Rhistory
+.RData
+/tags
+/tests/testthat/github-token.txt
+/r-packages
+/revdep
+docs
+inst/doc
+.DS_STORE
