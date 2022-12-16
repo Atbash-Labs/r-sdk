@@ -44,7 +44,9 @@ jobs:
           extra-packages: any::rcmdcheck
           needs: check
 
-      - uses: r-lib/actions/check-r-package@v2  
+      - uses: r-lib/actions/check-r-package@v2
+        with:
+          error-on: '"error"'  
 
       # - name: Run install script
       #   run: Rscript -e "testthat::test_dir('tests')"
