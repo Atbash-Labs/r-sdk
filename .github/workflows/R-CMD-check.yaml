@@ -18,6 +18,16 @@ jobs:
       R_KEEP_PKG_SOURCE: yes
 
     steps:
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker-practice/actions-setup-docker@master
+      - run: |
+          docker run -d -t -e ADMIN_API_KEY="admin_key" -e SELLER_API_KEY="seller_key" -e BUYER_API_KEY="buyer_key" -p 8080:8080 ghcr.io/atbash-labs/enclave-test
+
       - uses: actions/checkout@v3
 
       - name: Setup Pandoc
@@ -33,6 +43,9 @@ jobs:
         with:
           extra-packages: any::rcmdcheck
           needs: check
+
+      - name: Run install script
+        run: Rscript -e "testthat::test_dir('tests')"
 
       - name: Run tests
         run: Rscript -e "testthat::test_dir('tests')"
