@@ -5,7 +5,7 @@ name: Pages
 on:
   push:
     branches:
-    - nonexistent-branch
+      - pfefar/setup
 
 jobs:
   pkgdown:

@@ -55,12 +55,3 @@ test_that("test_invalid_buyer_for_new_key", {
 
   expect_true(length(new_key$subkey) == 0)
 })
-
-# test_that("test_query_success", {
-#   buyer <- new_valid_buyer()
-#   sql_query <- "select count(*) as numpeople from public.condition_era_death"
-#   output <- query(buyer, sql_query)
-
-#   expect_notequal(result, NULL)
-#   expect_notequal(accuracy, "")
-# })
