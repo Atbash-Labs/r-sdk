@@ -3,7 +3,7 @@ pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
   Tutorial: Tutorial.html
-last_built: 2022-12-16T23:52Z
+last_built: 2022-12-22T23:27Z
 urls:
   reference: https://gh.r-lib.org/reference
   article: https://gh.r-lib.org/articles
