@@ -1,10 +1,5 @@
 library(httr)
 
-
-hello <- function() {
-  print("Hello, world!")
-}
-
 new_buyer <- function(api_key, ip_addr, port = "8080") {
   base_url <- paste("http://", ip_addr, ":", port, sep = "")
   inst <- c(
