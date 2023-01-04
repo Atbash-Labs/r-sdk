@@ -64,6 +64,8 @@ query <- function(buyer, query_key = NULL, query) {
   output_result <- rsp["result"]
   output_accuracy <- as.character(rsp["accuracy"])
   output <- c(output_result, output_accuracy)
+  curr_query <- c(query, output_result, output_accuracy)
+  buyer["all_queries"] <- append(buyer["all_queries"], curr_query)
   return(output)
 }
 
