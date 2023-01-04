@@ -1,4 +1,4 @@
-#source("../../R/sdk.R", chdir = TRUE) // this is here for local tests
+source("../../R/sdk.R", chdir = TRUE) # this is here for local tests
 library(testthat)
 
 

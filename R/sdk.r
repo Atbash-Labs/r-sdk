@@ -2,10 +2,15 @@ library(httr)
 
 new_buyer <- function(api_key, ip_addr, port = "8080") {
   base_url <- paste("http://", ip_addr, ":", port, sep = "")
+
+  all_queries <- c()
+
   inst <- c(
     "api_key" = api_key,
-    "ip_addr" = ip_addr, "port" = port, "base_url" = base_url
+    "ip_addr" = ip_addr, "port" = port, "base_url" = base_url,
+    "all_queries" = all_queries
   )
+
   return(inst)
 }
 
