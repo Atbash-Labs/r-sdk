@@ -5,9 +5,22 @@ new_buyer <- function(api_key, ip_addr, port = "8080") {
 
   inst <- list(
     "api_key" = api_key,
-    "ip_addr" = ip_addr, "port" = port, "base_url" = base_url,
-    "all_queries" = list()
+    "ip_addr" = ip_addr,
+    "port" = port,
+    "base_url" = base_url,
+    "all_queries" = list(),
+    "key_list" = list()
   )
+
+  key_list <- get_key_list(inst)
+
+  if (length(key_list$subkeys) == 0) {
+    key <- get_key(inst)
+    curr_list <- inst$key_list
+    inst$key_list <- append(curr_list, list(key$subkey))
+  } else {
+    inst$key_list <- key_list
+  }
 
   return(inst)
 }
