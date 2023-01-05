@@ -16,10 +16,19 @@ buyer <- new_buyer(api_key, ip_addr)
 
 # retrieve the query sub key
 query_key <- get_key(buyer)
-print(query_key)
+# print(query_key)
 
 
 # Initiate a query
 sql_query <- "select count(*) as numpeople from public.condition_era_death"
 result <- query(buyer, query_key, query = sql_query)
-print(result)
+# print(result)
+
+
+# Initiate a query
+sql_query <- "select count(*) as numpeople from public.condition_era_death"
+result <- query(buyer, query_key, query = sql_query)
+# print(result)
+
+
+print_query_history(buyer)

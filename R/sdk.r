@@ -3,12 +3,10 @@ library(httr)
 new_buyer <- function(api_key, ip_addr, port = "8080") {
   base_url <- paste("http://", ip_addr, ":", port, sep = "")
 
-  all_queries <- c()
-
-  inst <- c(
+  inst <- list(
     "api_key" = api_key,
     "ip_addr" = ip_addr, "port" = port, "base_url" = base_url,
-    "all_queries" = all_queries
+    "all_queries" = list()
   )
 
   return(inst)
@@ -65,7 +63,8 @@ query <- function(buyer, query_key = NULL, query) {
   output_accuracy <- as.character(rsp["accuracy"])
   output <- c(output_result, output_accuracy)
   curr_query <- c(query, output_result, output_accuracy)
-  buyer["all_queries"] <- append(buyer["all_queries"], curr_query)
+  curr_history <- buyer$all_queries
+  buyer$all_queries <<- append(curr_history, curr_query)
   return(output)
 }
 
@@ -87,4 +86,9 @@ get_columns <- function(buyer, query_key) {
   columns <- as.character(rsp["columns"])
 
   return(columns)
+}
+
+print_query_history <- function(buyer) {
+  print("yoyo")
+  print(buyer$all_queries)
 }
