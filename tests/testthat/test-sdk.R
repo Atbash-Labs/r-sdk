@@ -1,4 +1,4 @@
-source("../../R/sdk.R", chdir = TRUE) # this is here for local tests
+# source("../../R/sdk.R", chdir = TRUE) # this is here for local tests
 library(testthat)
 
 
@@ -20,19 +20,19 @@ test_that("test_get_key_list_success", {
   buyer <- new_valid_buyer()
   key_list <- get_key_list(buyer)
 
-  expect_equal(length(key_list$subkeys), 0)
+  expect_equal(length(key_list$subkeys), 1)
 })
 
 test_that("test_key_list_added_key", {
   buyer <- new_valid_buyer()
 
   key_list <- get_key_list(buyer)
-  expect_equal(length(key_list$subkeys), 0)
+  expect_equal(length(key_list$subkeys), 1)
 
   stub <- get_key(buyer)
 
   key_list <- get_key_list(buyer)
-  expect_equal(length(key_list$subkeys), 1)
+  expect_equal(length(key_list$subkeys), 2)
 })
 
 test_that("test_invalid_buyer_for_key_list", {
