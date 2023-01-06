@@ -58,6 +58,10 @@ get_key_list <- function(buyer) {
 }
 
 query <- function(buyer, query_key = NULL, query) {
+  if (missing(query_key)) {
+    query_key <- buyer$key_list[[1]]
+  }
+
   base_url <- as.character(buyer["base_url"])
   query_url <- paste(base_url, "/execute_query", sep = "")
   payload <- list(
@@ -72,7 +76,7 @@ query <- function(buyer, query_key = NULL, query) {
     print(error)
   }
 
-  output_result <- rsp["result"]
+  output_result <- as.character(rsp["result"])
   output_accuracy <- as.character(rsp["accuracy"])
   output <- c(output_result, output_accuracy)
   curr_query <- c(query, output_result, output_accuracy)
