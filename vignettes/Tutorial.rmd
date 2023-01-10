@@ -10,7 +10,7 @@ vignette: >
 # Tutorial
 ========
 
-The best way to interact with the network is to use the `new_buyer()` & `Sftp` extension objects and its associated methods.
+The best way to interact with the network is to instantiate a ``Buyer`` object with the `new_buyer()` function.
 
 
 ## 1. Querying health datasets
@@ -42,6 +42,3 @@ result <- query(buyer, query_key, sql_query)
 columns <- get_columns(buyer, query_key)
 print(columns)
 ```
-
-
-## 2. Uploading data to Fortress Network
