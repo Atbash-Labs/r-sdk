@@ -75,9 +75,9 @@
 <div class="section level2">
 <h2 id="tutorial"># Tutorial<a class="anchor" aria-label="anchor" href="#tutorial"></a>
 </h2>
-<p>The best way to interact with the network is to use the
-<code>new_buyer()</code> &amp; <code>Sftp</code> extension objects and
-its associated methods.</p>
+<p>The best way to interact with the network is to instantiate a
+<code>Buyer</code> object with the <code>new_buyer()</code>
+function.</p>
 <div class="section level3">
 <h3 id="querying-health-datasets">1. Querying health datasets<a class="anchor" aria-label="anchor" href="#querying-health-datasets"></a>
 </h3>
@@ -106,10 +106,6 @@ query string and then print recieved query accuracy and results.</p>
 <span><span class="co"># get table columns</span></span>
 <span><span class="va">columns</span> <span class="op">&lt;-</span> <span class="fu">get_columns</span><span class="op">(</span><span class="va">buyer</span>, <span class="va">query_key</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">columns</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level3">
-<h3 id="uploading-data-to-fortress-network">2. Uploading data to Fortress Network<a class="anchor" aria-label="anchor" href="#uploading-data-to-fortress-network"></a>
-</h3>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
