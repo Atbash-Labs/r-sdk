@@ -16,6 +16,30 @@
     <loc>https://gh.r-lib.org/index.html</loc>
   </url>
   <url>
+    <loc>https://gh.r-lib.org/news/index.html</loc>
+  </url>
+  <url>
+    <loc>https://gh.r-lib.org/reference/get_columns.html</loc>
+  </url>
+  <url>
+    <loc>https://gh.r-lib.org/reference/get_key.html</loc>
+  </url>
+  <url>
+    <loc>https://gh.r-lib.org/reference/get_key_list.html</loc>
+  </url>
+  <url>
     <loc>https://gh.r-lib.org/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>https://gh.r-lib.org/reference/new_buyer.html</loc>
+  </url>
+  <url>
+    <loc>https://gh.r-lib.org/reference/print_query_history.html</loc>
+  </url>
+  <url>
+    <loc>https://gh.r-lib.org/reference/query.html</loc>
+  </url>
+  <url>
+    <loc>https://gh.r-lib.org/reference/rsdk-package.html</loc>
   </url>
 </urlset>
