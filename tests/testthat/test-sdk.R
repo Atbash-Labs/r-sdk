@@ -1,5 +1,5 @@
 # source("../../R/sdk.R", chdir = TRUE) # this is here for local tests
-library(testthat)
+context("sdk")
 
 
 new_valid_buyer <- function() {

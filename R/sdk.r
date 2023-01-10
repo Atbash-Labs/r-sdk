@@ -1,5 +1,3 @@
-library(httr)
-
 #' Instantiate a new ``Buyer`` object
 #'
 #' @param api_key The ``API KEY`` from the website console
@@ -10,6 +8,8 @@ library(httr)
 #' api_key <- "buyer_key"
 #' ip_addr <- "127.0.0.1"
 #' buyer <- new_buyer(api_key, ip_addr)
+#' #'
+#' @export
 new_buyer <- function(api_key, ip_addr, port = "8080") {
   base_url <- paste("http://", ip_addr, ":", port, sep = "")
 
@@ -39,6 +39,8 @@ new_buyer <- function(api_key, ip_addr, port = "8080") {
 #'
 #' @param buyer The ``Buyer`` object from the ``new_buyer`` function
 #' @return the subkey to interact with the network
+#' #'
+#' @export
 get_key <- function(buyer) {
   base_url <- as.character(buyer["base_url"])
   subkey_url <- paste(base_url, "/get_subkey", sep = "")
@@ -59,6 +61,8 @@ get_key <- function(buyer) {
 #'
 #' @param buyer The ``Buyer`` object from the ``new_buyer`` function
 #' @return the list of sub keys
+#' #'
+#' @export
 get_key_list <- function(buyer) {
   base_url <- as.character(buyer["base_url"])
   subkey_list_url <- paste(base_url, "/list_subkeys", sep = "")
@@ -85,6 +89,8 @@ get_key_list <- function(buyer) {
 #' sql_query <- "select count(*) as numpeople from public.condition_era_death"
 #' result <- query(buyer, query = sql_query)
 #' print_query_history(buyer)
+#' #'
+#' @export
 query <- function(buyer, query_key = NULL, query) {
   if (missing(query_key)) {
     query_key <- buyer$key_list[[1]]
@@ -118,6 +124,8 @@ query <- function(buyer, query_key = NULL, query) {
 #' @param buyer The ``Buyer`` object from the ``new_buyer`` function
 #' @param query_key [optional] subkey query key
 #' @return returns the list of columns
+#' #'
+#' @export
 get_columns <- function(buyer, query_key) {
   base_url <- as.character(buyer["base_url"])
   query_url <- paste(base_url, "/list_columns", sep = "")
@@ -141,6 +149,8 @@ get_columns <- function(buyer, query_key) {
 #' Pretty print the history queries with accuracy and results
 #'
 #' @param buyer The ``Buyer`` object from the ``new_buyer`` function
+#' #'
+#' @export
 print_query_history <- function(buyer) {
   print("yoyo")
   print(buyer$all_queries)

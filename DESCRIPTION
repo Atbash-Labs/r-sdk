@@ -21,3 +21,4 @@ Roxygen: list(markdown = TRUE)
 LazyData: true
 Config/Needs/website: tidyverse/tidytemplate
 Config/testthat/load-all: list(export_all = TRUE, helpers = FALSE)
+RoxygenNote: 7.2.2
