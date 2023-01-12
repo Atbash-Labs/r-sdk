@@ -19,7 +19,6 @@ returns \code{result} and \code{accuracy} of the query
 sql_query <- "select count(*) as numpeople from public.condition_era_death"
 result <- query(buyer, query = sql_query)
 print_query_history(buyer)
-#'
 }
 \description{
 Return the list of sub keys for the passed in buyer

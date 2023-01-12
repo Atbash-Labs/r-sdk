@@ -11,7 +11,6 @@ get_key_list(buyer)
 }
 \value{
 the list of sub keys
-#'
 }
 \description{
 Return the list of sub keys for the passed in buyer

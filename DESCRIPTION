@@ -10,10 +10,10 @@ Imports:
   cli,
   httr,
   rlang,
-  testthat
+  testthat,
+  rmarkdown
 Suggests: 
-  knitr, 
-  rmarkdown, 
+  knitr
 VignetteBuilder: knitr
 Encoding: UTF-8
 Language: en-US

@@ -7,8 +7,7 @@
 print_query_history(buyer)
 }
 \arguments{
-\item{buyer}{The \code{Buyer} object from the \code{new_buyer} function
-#'}
+\item{buyer}{The \code{Buyer} object from the \code{new_buyer} function}
 }
 \description{
 Pretty print the history queries with accuracy and results

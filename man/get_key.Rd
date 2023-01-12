@@ -11,7 +11,6 @@ get_key(buyer)
 }
 \value{
 the subkey to interact with the network
-#'
 }
 \description{
 Returns a sub key for the passed in buyer

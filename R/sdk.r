@@ -1,3 +1,5 @@
+library(httr) # this is here for local tests script(run_tests.sh)
+
 #' Instantiate a new ``Buyer`` object
 #'
 #' @param api_key The ``API KEY`` from the website console
@@ -8,17 +10,21 @@
 #' api_key <- "buyer_key"
 #' ip_addr <- "127.0.0.1"
 #' buyer <- new_buyer(api_key, ip_addr)
-#' #'
+#'
 #' @export
 new_buyer <- function(api_key, ip_addr, port = "8080") {
   base_url <- paste("http://", ip_addr, ":", port, sep = "")
+
+  columns <- c("query", "result", "accuracy")
+  df <- data.frame(matrix(nrow = 0, ncol = length(columns)))
+  colnames(df) <- columns
 
   inst <- list(
     "api_key" = api_key,
     "ip_addr" = ip_addr,
     "port" = port,
     "base_url" = base_url,
-    "all_queries" = list(),
+    "all_queries" = df,
     "key_list" = list()
   )
 
@@ -39,7 +45,7 @@ new_buyer <- function(api_key, ip_addr, port = "8080") {
 #'
 #' @param buyer The ``Buyer`` object from the ``new_buyer`` function
 #' @return the subkey to interact with the network
-#' #'
+#'
 #' @export
 get_key <- function(buyer) {
   base_url <- as.character(buyer["base_url"])
@@ -61,7 +67,7 @@ get_key <- function(buyer) {
 #'
 #' @param buyer The ``Buyer`` object from the ``new_buyer`` function
 #' @return the list of sub keys
-#' #'
+#'
 #' @export
 get_key_list <- function(buyer) {
   base_url <- as.character(buyer["base_url"])
@@ -89,7 +95,7 @@ get_key_list <- function(buyer) {
 #' sql_query <- "select count(*) as numpeople from public.condition_era_death"
 #' result <- query(buyer, query = sql_query)
 #' print_query_history(buyer)
-#' #'
+#'
 #' @export
 query <- function(buyer, query_key = NULL, query) {
   if (missing(query_key)) {
@@ -113,9 +119,13 @@ query <- function(buyer, query_key = NULL, query) {
   output_result <- as.character(rsp["result"])
   output_accuracy <- as.character(rsp["accuracy"])
   output <- c(output_result, output_accuracy)
-  curr_query <- c(query, output_result, output_accuracy)
   curr_history <- buyer$all_queries
-  buyer$all_queries <<- append(curr_history, curr_query)
+  new_row <- data.frame(
+    query = query, result = output_result,
+    accuracy = output_accuracy
+  )
+  new_history <- rbind(curr_history, new_row)
+  buyer$all_queries <<- new_history
   return(output)
 }
 
@@ -124,7 +134,7 @@ query <- function(buyer, query_key = NULL, query) {
 #' @param buyer The ``Buyer`` object from the ``new_buyer`` function
 #' @param query_key [optional] subkey query key
 #' @return returns the list of columns
-#' #'
+#'
 #' @export
 get_columns <- function(buyer, query_key) {
   base_url <- as.character(buyer["base_url"])
@@ -149,9 +159,18 @@ get_columns <- function(buyer, query_key) {
 #' Pretty print the history queries with accuracy and results
 #'
 #' @param buyer The ``Buyer`` object from the ``new_buyer`` function
-#' #'
+#'
 #' @export
 print_query_history <- function(buyer) {
-  print("yoyo")
-  print(buyer$all_queries)
+  table_frame <- paste(replicate(90, "-"), collapse = "")
+  table_frame <- paste("+", table_frame, "+", sep = "")
+
+  len <- nrow(buyer$all_queries)
+
+  for (i in 1:len) {
+    print(table_frame)
+    print(buyer$all_queries[["query"]][[i]])
+    print(buyer$all_queries[["result"]][[i]])
+    print(buyer$all_queries[["accuracy"]][[i]])
+  }
 }

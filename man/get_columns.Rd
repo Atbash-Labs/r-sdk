@@ -13,7 +13,6 @@ get_columns(buyer, query_key)
 }
 \value{
 returns the list of columns
-#'
 }
 \description{
 Return the table ddl columns

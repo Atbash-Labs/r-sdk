@@ -1,4 +1,4 @@
-# source("../../R/sdk.R", chdir = TRUE) # this is here for local tests
+source("../../R/sdk.R", chdir = TRUE) # this is here for local tests script(run_tests.sh) # nolint
 context("sdk")
 
 
