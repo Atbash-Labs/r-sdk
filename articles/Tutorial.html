@@ -82,7 +82,7 @@
 <code>Buyer</code> object with the <code><a href="../reference/new_buyer.html">new_buyer()</a></code>
 function.</p>
 <div class="section level3">
-<h3 id="querying-health-datasets">1. Querying health datasets<a class="anchor" aria-label="anchor" href="#querying-health-datasets"></a>
+<h3 id="querying-health-datasets">Querying health datasets<a class="anchor" aria-label="anchor" href="#querying-health-datasets"></a>
 </h3>
 <p>Executing a query : For executing a query, we get the api key and ip
 address from the web dashboard and then create a <code>Buyer</code>
@@ -106,9 +106,43 @@ query string and then print recieved query accuracy and results.</p>
 <span><span class="va">sql_query</span> <span class="op">&lt;-</span> <span class="st">"select count(*) as numpeople from public.condition_era_death"</span></span>
 <span><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/query.html">query</a></span><span class="op">(</span><span class="va">buyer</span>, <span class="va">query_key</span>, <span class="va">sql_query</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># get table columns</span></span>
-<span><span class="va">columns</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_columns.html">get_columns</a></span><span class="op">(</span><span class="va">buyer</span>, <span class="va">query_key</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">columns</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">sql_query</span> <span class="op">&lt;-</span> <span class="st">"select count(*) as people_per_condition from person"</span></span>
+<span><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/query.html">query</a></span><span class="op">(</span><span class="va">buyer</span>, query <span class="op">=</span> <span class="va">sql_query</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># execution result and accuracy of the query</span></span>
+<span><span class="co">#  -- add proper result indexing subscript here</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="note-related-to-sql-querying-rules">NOTE!! : Related to SQL querying rules<a class="anchor" aria-label="anchor" href="#note-related-to-sql-querying-rules"></a>
+</h3>
+<ul>
+<li>allowed: Group by, selection of count, sum/min/max/avg of limited
+columns, of raw columns that are the group-by columns, any where
+conditions</li>
+<li>not allowed: join, selection of columns that arent in the group by,
+arbitrary sum/min/max/avgs</li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="pretty-print-query-history">Pretty print query history<a class="anchor" aria-label="anchor" href="#pretty-print-query-history"></a>
+</h3>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="fu"><a href="../reference/print_query_history.html">print_query_history</a></span><span class="op">(</span><span class="va">buyer</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="st">"+------------------------------------------------------------------------------------------+"</span></span>
+<span><span class="st">"select count(*) as numpeople from public.condition_era_death"</span></span>
+<span><span class="st">"list(list(\"numpeople\"), list(30297))"</span></span>
+<span><span class="st">"Results of this query can be expected to be within: 0.01% of the true value with 95% probability"</span></span>
+<span><span class="st">"+------------------------------------------------------------------------------------------+"</span></span>
+<span><span class="st">"select count(*) as people_per_condition from person"</span></span>
+<span><span class="st">"list(list(\"people_per_condition\"), list(2000000))"</span></span>
+<span><span class="st">"Results of this query can be expected to be within: 0.0% of the true value with 95% probability"</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="get-queryable-table-columns">Get queryable table columns<a class="anchor" aria-label="anchor" href="#get-queryable-table-columns"></a>
+</h3>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
