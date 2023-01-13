@@ -1,4 +1,4 @@
-source("../../R/sdk.R", chdir = TRUE) # this is here for local tests script(run_tests.sh) # nolint
+# source("../../R/sdk.R", chdir = TRUE) # this is here for local tests script(run_tests.sh) # nolint
 context("sdk")
 
 
@@ -54,18 +54,4 @@ test_that("test_invalid_buyer_for_new_key", {
   new_key <- get_key(buyer)
 
   expect_true(length(new_key$subkey) == 0)
-})
-
-test_that("test_query_success", {
-  # buyer <- new_valid_buyer()
-  # sql_query <- "select count(*) as numpeople from public.condition_era_death"
-  # result <- buyer.query(query = sql_query)
-
-  # expect_false(length(result) == 0)
-  # expect_false(length(accuracy) == 0)
-})
-
-
-test_that("test_query_history", {
-
 })

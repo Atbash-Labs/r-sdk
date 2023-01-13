@@ -13,7 +13,7 @@ vignette: >
 The best way to interact with the network is to instantiate a ``Buyer`` object with the `new_buyer()` function.
 
 
-## 1. Querying health datasets
+## Querying health datasets
 
 Executing a query :
 For executing a query, we get the api key and ip address from the web dashboard and then create a
@@ -38,7 +38,37 @@ print(query_key)
 sql_query <- "select count(*) as numpeople from public.condition_era_death"
 result <- query(buyer, query_key, sql_query)
 
-# get table columns
-columns <- get_columns(buyer, query_key)
-print(columns)
+sql_query <- "select count(*) as people_per_condition from person"
+result <- query(buyer, query = sql_query)
+
+# execution result and accuracy of the query
+#  -- add proper result indexing subscript here
+
 ```
+
+
+## NOTE!! : Related to SQL querying rules
+- allowed: Group by, selection of count, sum/min/max/avg of limited columns, of raw columns that are the group-by columns, any where conditions
+- not allowed: join, selection of columns that arent in the group by, arbitrary sum/min/max/avgs
+
+
+
+## Pretty print query history
+
+``` r
+
+print_query_history(buyer)
+
+
+"+------------------------------------------------------------------------------------------+"
+"select count(*) as numpeople from public.condition_era_death"
+"list(list(\"numpeople\"), list(30297))"
+"Results of this query can be expected to be within: 0.01% of the true value with 95% probability"
+"+------------------------------------------------------------------------------------------+"
+"select count(*) as people_per_condition from person"
+"list(list(\"people_per_condition\"), list(2000000))"
+"Results of this query can be expected to be within: 0.0% of the true value with 95% probability"
+
+```
+
+## Get queryable table columns 

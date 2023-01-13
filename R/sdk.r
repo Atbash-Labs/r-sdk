@@ -1,4 +1,4 @@
-library(httr) # this is here for local tests script(run_tests.sh)
+# library(httr) # this is here for local tests script(run_tests.sh)
 
 #' Instantiate a new ``Buyer`` object
 #'
@@ -136,7 +136,11 @@ query <- function(buyer, query_key = NULL, query) {
 #' @return returns the list of columns
 #'
 #' @export
-get_columns <- function(buyer, query_key) {
+get_columns <- function(buyer, query_key = NULL) {
+  if (missing(query_key)) {
+    query_key <- buyer$key_list[[1]]
+  }
+
   base_url <- as.character(buyer["base_url"])
   query_url <- paste(base_url, "/list_columns", sep = "")
   payload <- list(
@@ -151,7 +155,7 @@ get_columns <- function(buyer, query_key) {
     print(error)
   }
 
-  columns <- as.character(rsp["columns"])
+  columns <- rsp["columns"]
 
   return(columns)
 }
