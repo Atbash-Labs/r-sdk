@@ -109,8 +109,7 @@ query string and then print recieved query accuracy and results.</p>
 <span><span class="va">sql_query</span> <span class="op">&lt;-</span> <span class="st">"select count(*) as people_per_condition from person"</span></span>
 <span><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu">query</span><span class="op">(</span><span class="va">buyer</span>, query <span class="op">=</span> <span class="va">sql_query</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># execution result and accuracy of the query</span></span>
-<span><span class="co">#  -- add proper result indexing subscript here</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">result</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="note-related-to-sql-querying-rules">NOTE!! : Related to SQL querying rules<a class="anchor" aria-label="anchor" href="#note-related-to-sql-querying-rules"></a>
@@ -141,8 +140,47 @@ arbitrary sum/min/max/avgs</li>
 <span><span class="st">"Results of this query can be expected to be within: 0.0% of the true value with 95% probability"</span></span></code></pre></div>
 </div>
 <div class="section level3">
+<h3 id="get-queryable-table-names">Get queryable table names<a class="anchor" aria-label="anchor" href="#get-queryable-table-names"></a>
+</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>columns <span class="ot">&lt;-</span> buyer<span class="sc">$</span><span class="fu">get_columns</span>()</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">names</span>(columns))</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">"CONDITION_ERA"</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>[<span class="dv">2</span>] <span class="st">"CONDITION_ERA_CONDITION_OCCURRENCE"</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>[<span class="dv">3</span>] <span class="st">"CONDITION_ERA_DEATH"</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>[<span class="dv">4</span>] <span class="st">"CONDITION_ERA_DEVICE_EXPOSURE"</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>[<span class="dv">5</span>] <span class="st">"CONDITION_ERA_DOSE_ERA"</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>[<span class="dv">6</span>] <span class="st">"CONDITION_ERA_DRUG_ERA"</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>[<span class="dv">7</span>] <span class="st">"CONDITION_ERA_DRUG_EXPOSURE"</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>[<span class="dv">8</span>] <span class="st">"CONDITION_ERA_EPISODE"</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>...</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>...</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>[<span class="dv">166</span>] <span class="st">"SPECIMEN"</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>[<span class="dv">167</span>] <span class="st">"SPECIMEN_VISIT_DETAIL"</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>[<span class="dv">168</span>] <span class="st">"SPECIMEN_VISIT_OCCURRENCE"</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>[<span class="dv">169</span>] <span class="st">"VISIT_DETAIL"</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>[<span class="dv">170</span>] <span class="st">"VISIT_DETAIL_VISIT_OCCURRENCE"</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>[<span class="dv">171</span>] <span class="st">"VISIT_OCCURRENCE"</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span></code></pre></div>
+</div>
+<div class="section level3">
 <h3 id="get-queryable-table-columns">Get queryable table columns<a class="anchor" aria-label="anchor" href="#get-queryable-table-columns"></a>
 </h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>columns <span class="ot">&lt;-</span> buyer<span class="sc">$</span><span class="fu">get_columns</span>()</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(columns<span class="sc">$</span>PERSON)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">"birth_datetime"</span>              <span class="st">"care_site_id"</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>[<span class="dv">3</span>] <span class="st">"day_of_birth"</span>                <span class="st">"ethnicity_concept_id"</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>[<span class="dv">5</span>] <span class="st">"ethnicity_source_concept_id"</span> <span class="st">"ethnicity_source_value"</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>[<span class="dv">7</span>] <span class="st">"gender_concept_id"</span>           <span class="st">"gender_source_concept_id"</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>[<span class="dv">9</span>] <span class="st">"gender_source_value"</span>         <span class="st">"location_id"</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>[<span class="dv">11</span>] <span class="st">"month_of_birth"</span>              <span class="st">"person_id"</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>[<span class="dv">13</span>] <span class="st">"person_source_value"</span>         <span class="st">"provider_id"</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>[<span class="dv">15</span>] <span class="st">"race_concept_id"</span>             <span class="st">"race_source_concept_id"</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>[<span class="dv">17</span>] <span class="st">"race_source_value"</span>           <span class="st">"year_of_birth"</span></span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
