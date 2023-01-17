@@ -11,7 +11,8 @@ Imports:
   httr,
   rlang,
   testthat,
-  rmarkdown
+  rmarkdown,
+  jsonlite
 Suggests: 
   knitr
 VignetteBuilder: knitr
