@@ -41,8 +41,7 @@ result <- query(buyer, query_key, sql_query)
 sql_query <- "select count(*) as people_per_condition from person"
 result <- query(buyer, query = sql_query)
 
-# execution result and accuracy of the query
-#  -- add proper result indexing subscript here
+print(result)
 
 ```
 
@@ -71,4 +70,51 @@ print_query_history(buyer)
 
 ```
 
+
+## Get queryable table names 
+
+``` r
+
+columns <- buyer$get_columns()
+print(names(columns))
+
+[1] "CONDITION_ERA"
+[2] "CONDITION_ERA_CONDITION_OCCURRENCE"
+[3] "CONDITION_ERA_DEATH"
+[4] "CONDITION_ERA_DEVICE_EXPOSURE"
+[5] "CONDITION_ERA_DOSE_ERA"
+[6] "CONDITION_ERA_DRUG_ERA"
+[7] "CONDITION_ERA_DRUG_EXPOSURE"
+[8] "CONDITION_ERA_EPISODE"
+...
+...
+[166] "SPECIMEN"
+[167] "SPECIMEN_VISIT_DETAIL"
+[168] "SPECIMEN_VISIT_OCCURRENCE"
+[169] "VISIT_DETAIL"
+[170] "VISIT_DETAIL_VISIT_OCCURRENCE"
+[171] "VISIT_OCCURRENCE"
+
+
+```
+
+
 ## Get queryable table columns 
+
+``` r
+
+columns <- buyer$get_columns()
+print(columns$PERSON)
+ 
+ 
+[1] "birth_datetime"              "care_site_id"
+[3] "day_of_birth"                "ethnicity_concept_id"
+[5] "ethnicity_source_concept_id" "ethnicity_source_value"
+[7] "gender_concept_id"           "gender_source_concept_id"
+[9] "gender_source_value"         "location_id"
+[11] "month_of_birth"              "person_id"
+[13] "person_source_value"         "provider_id"
+[15] "race_concept_id"             "race_source_concept_id"
+[17] "race_source_value"           "year_of_birth"
+
+```
