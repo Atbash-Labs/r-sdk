@@ -81,7 +81,6 @@ buyer <- setRefClass("buyer",
 
       subkey_list <- rsp["subkeys"]
       return(subkey_list)
-
     },
     query = function(query_key = NULL, query = "") {
       "returns result and accuracy of the query"
@@ -101,8 +100,8 @@ buyer <- setRefClass("buyer",
       if (status_code(r) != 200) {
         error <- rsp["message"]
         print(error)
+        return(list(query = query, result = NULL, accuracy = NULL))
       }
-
 
       result <- as.character(rsp["result"])
       accuracy <- as.character(rsp["accuracy"])
@@ -147,7 +146,6 @@ buyer <- setRefClass("buyer",
       if (status_code(r) != 200) {
         error <- rsp["message"]
         print(error)
-
       }
 
       columns <- rsp$columns
