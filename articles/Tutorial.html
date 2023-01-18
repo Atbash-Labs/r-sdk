@@ -84,7 +84,7 @@ of <code>buyer</code> class with the <code>buyer$new()</code>.</p>
 <h3 id="querying-health-datasets">Querying health datasets<a class="anchor" aria-label="anchor" href="#querying-health-datasets"></a>
 </h3>
 <p>Executing a query : For executing a query, we get the api key and ip
-address from the web dashboard and then create a <code>Buyer</code>
+address from the web dashboard and then create a <code>buyer</code>
 instance and then call a query method on that buyer instance with a SQL
 query string and then print recieved query accuracy and results.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
@@ -94,19 +94,19 @@ query string and then print recieved query accuracy and results.</p>
 <span><span class="va">ip_addr</span> <span class="op">&lt;-</span> <span class="st">"127.0.0.1"</span></span>
 <span></span>
 <span></span>
-<span><span class="va">buyer</span> <span class="op">&lt;-</span> <span class="fu">new_buyer</span><span class="op">(</span><span class="va">api_key</span>, <span class="va">ip_addr</span><span class="op">)</span></span>
+<span><span class="va">buyer</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/buyer-class.html">buyer</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">api_key</span>, <span class="va">ip_addr</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># retrieve the query sub key</span></span>
-<span><span class="va">query_key</span> <span class="op">&lt;-</span> <span class="fu">get_key</span><span class="op">(</span><span class="va">buyer</span><span class="op">)</span></span>
+<span><span class="va">query_key</span> <span class="op">&lt;-</span> <span class="va">buyer</span><span class="op">$</span><span class="fu">get_key</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">query_key</span><span class="op">)</span></span>
 <span></span>
 <span></span>
 <span><span class="co"># Initiate a query</span></span>
 <span><span class="va">sql_query</span> <span class="op">&lt;-</span> <span class="st">"select count(*) as numpeople from public.condition_era_death"</span></span>
-<span><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu">query</span><span class="op">(</span><span class="va">buyer</span>, <span class="va">query_key</span>, <span class="va">sql_query</span><span class="op">)</span></span>
+<span><span class="va">result</span> <span class="op">&lt;-</span> <span class="va">buyer</span><span class="op">$</span><span class="fu">query</span><span class="op">(</span>query <span class="op">=</span> <span class="va">sql_query</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">sql_query</span> <span class="op">&lt;-</span> <span class="st">"select count(*) as people_per_condition from person"</span></span>
-<span><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu">query</span><span class="op">(</span><span class="va">buyer</span>, query <span class="op">=</span> <span class="va">sql_query</span><span class="op">)</span></span>
+<span><span class="va">result</span> <span class="op">&lt;-</span> <span class="va">buyer</span><span class="op">$</span><span class="fu">query</span><span class="op">(</span>query <span class="op">=</span> <span class="va">sql_query</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">result</span><span class="op">)</span></span></code></pre></div>
 </div>
