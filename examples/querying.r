@@ -3,7 +3,7 @@
 ###########################################
 
 source("../R/sdk.R", chdir = TRUE)
-print(getwd())
+
 ###########################################
 ####      Buyer Interaction Flow       ####
 ###########################################
@@ -11,15 +11,19 @@ print(getwd())
 api_key <- "buyer_key"
 ip_addr <- "127.0.0.1"
 
-
-buyer <- new_buyer(api_key, ip_addr)
-
-# retrieve the query sub key
-query_key <- get_key(buyer)
-print(query_key)
+buyer <- buyer$new(api_key, ip_addr)
 
 
 # Initiate a query
 sql_query <- "select count(*) as numpeople from public.condition_era_death"
-result <- query(buyer, query_key, query = sql_query)
-print(result)
+output <- buyer$query(query = sql_query)
+
+
+sql_query <- "select count(*) as people_per_condition from person"
+result <- buyer$query(query = sql_query)
+
+
+columns <- buyer$get_columns()
+print(columns$PERSON)
+
+buyer$print_query_history()

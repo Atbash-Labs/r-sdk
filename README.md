@@ -14,4 +14,6 @@ The module can then be used as follows:
 library(fortress_sdk)
 ```
 
-check out these [demo](./examples) interactions with the library
+
+## check out the tutorial [docs](https://atbash-labs.github.io/r-sdk/articles/Tutorial.html)
+## check out the [demo](https://github.com/Atbash-Labs/r-sdk/tree/main/examples) interaction with the library
