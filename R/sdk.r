@@ -7,7 +7,7 @@ library(jsonlite)
 #' @param api_key The ``API KEY`` from the website console
 #' @param ip_addr The ``IP Address`` key from the website console
 #' @param port [optional] The ``PORT`` from the website console
-#' @param use_https the https boolean toogle
+#' @param use_https [optional] The https boolean toogle
 #'
 #' @export buyer
 buyer <- setRefClass("buyer",
