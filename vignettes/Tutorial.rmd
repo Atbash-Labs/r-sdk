@@ -10,7 +10,7 @@ vignette: >
 # Tutorial
 ========
 
-The best way to interact with the network is to instantiate a ``Buyer`` object with the `new_buyer()` function.
+The best way to interact with the network is to instantiate an object of ``buyer`` class with the `buyer$new()`.
 
 
 ## Querying health datasets

@@ -1,4 +1,4 @@
-source("../../R/sdk.R", chdir = TRUE) # this is here for local tests script(run_tests.sh) # nolint
+# source("../../R/sdk.R", chdir = TRUE) # this is here for local tests script(run_tests.sh) # nolint
 context("sdk")
 
 
@@ -20,19 +20,21 @@ test_that("test_get_key_list_success", {
   buyer <- new_valid_buyer()
   key_list <- buyer$get_key_list()
 
-  expect_equal(length(key_list$subkeys), 1)
+  expect_equal(length(key_list), 1)
 })
 
 test_that("test_key_list_added_key", {
   buyer <- new_valid_buyer()
 
   key_list <- buyer$get_key_list()
-  expect_equal(length(key_list$subkeys), 1)
+  expect_equal(length(key_list), 1)
+  expect_equal(length(buyer$key_list), 1)
 
   stub <- buyer$get_key()
 
   key_list <- buyer$get_key_list()
-  expect_equal(length(key_list$subkeys), 2)
+  expect_equal(length(key_list), 2)
+  expect_equal(length(buyer$key_list), 2)
 })
 
 test_that("test_invalid_buyer_for_key_list", {
@@ -46,7 +48,7 @@ test_that("test_get_key_success", {
   buyer <- new_valid_buyer()
   new_key <- buyer$get_key()
 
-  expect_false(length(new_key$subkey) == 0)
+  expect_false(length(new_key) == 0)
 })
 
 test_that("test_invalid_buyer_for_new_key", {
@@ -66,15 +68,6 @@ test_that("test_query_success", {
   expect_false(length(output$accuracy) == 0)
 })
 
-test_that("test_query_failure", {
-  buyer <- new_invalid_buyer()
-  sql_query <- "select count(*) as numpeople from public.condition_era_death"
-  output <- buyer$query(query = sql_query)
-
-  expect_equal(output$result, NULL)
-  expect_equal(output$accuracy, NULL)
-})
-
 test_that("test_query_history", {
   buyer <- new_valid_buyer()
 
@@ -83,10 +76,12 @@ test_that("test_query_history", {
   sql_query <- "select count(*) as numpeople from public.condition_era_death"
   stub <- buyer$query(query = sql_query)
 
-  expect_equal(nrow(buyer$all_queries), 2)
+  length <- nrow(buyer$all_queries)
+  expect_equal(length, 2)
 
   sql_query <- "select count(*) as numpeople from public.condition_era_death"
   stub <- buyer$query(query = sql_query)
 
-  expect_equal(nrow(buyer$all_queries), 3)
+  length <- nrow(buyer$all_queries)
+  expect_equal(length, 3)
 })

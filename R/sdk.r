@@ -32,21 +32,19 @@ buyer <- setRefClass("buyer",
         "http", .self$terminator,
         "://", .self$ip_addr, ":", .self$port
       )
+
+      # result/all_queries data frame init
       columns <- c("query", "result", "accuracy")
       df <- data.frame(matrix(nrow = 0, ncol = length(columns)))
       colnames(df) <- columns
-
       .self$all_queries <- df
 
       .self$key_list <- list()
       initial_list <- get_key_list()
+      .self$key_list <- c(.self$key_list, initial_list)
 
-      if (length(initial_list$subkeys) == 0) {
+      if (length(.self$key_list) == 0) {
         key <- get_key()
-        curr_list <- .self$key_list
-        .self$key_list <- append(curr_list, list(key$subkey))
-      } else {
-        .self$key_list <- initial_list
       }
     },
     get_key = function() {
@@ -62,8 +60,8 @@ buyer <- setRefClass("buyer",
         print(error)
       }
 
-      subkey <- rsp["subkey"]
-      .self$key_list <- c(subkey, .self$key_list)
+      subkey <- rsp$subkey
+      .self$key_list <- c(.self$key_list, subkey)
       return(subkey)
     },
     get_key_list = function() {
@@ -79,7 +77,7 @@ buyer <- setRefClass("buyer",
         print(error)
       }
 
-      subkey_list <- rsp["subkeys"]
+      subkey_list <- rsp$subkeys
       return(subkey_list)
     },
     query = function(query_key = NULL, query = "") {
